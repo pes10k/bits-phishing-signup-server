@@ -70,7 +70,7 @@ def configure(path, uid=None):
     # Finally, write a simple start up message, both to test that we're
     # able to write as expected, and to get a start time in the logs
     gen_log.setLevel(logging.INFO)
-    gen_log.info("Starting webserver")
+    gen_log.info("Starting webserver (pid:{0}).".format(os.getpid()))
 
 
 def access_request(request_handler):
