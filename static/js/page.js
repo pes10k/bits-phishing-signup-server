@@ -5,11 +5,8 @@ jQuery(function ($) {
 
     $form.validate({
          submitHandler: function (thisForm) {
-            // some other code
-            // maybe disabling submit button
-            // then:
+            thisForm.submit();
             $fieldset.attr("disabled", "disabled");
-            // thisForm.submit();
         }
     });
 });

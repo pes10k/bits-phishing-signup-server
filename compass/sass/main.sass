@@ -1,17 +1,28 @@
 @import "compass/css3/border-radius"
 
 $error-color: red
+$error-padding: .5em
+
+@mixin error-style
+    +border-radius($error-padding)
+    padding: $error-padding
+    border: 1px solid $error-color
+
 section
     padding-top: 2em
     &:last-child
         padding-bottom: 4em
 
+.bg-success
+    padding: .5em
+
+p.bg-danger
+    +error-style
+
 label.error
-    +border-radius(.5em)
+    +error-style
     clear: both
     display: block
-    border: 1px solid $error-color
     background-color: #ff6666
-    padding: .5em
     margin-top: .5em
     margin-bottom: .5em

@@ -1,114 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Security Study Signup</title>
-    <link href="/static/contrib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/stylesheets/main.css" rel="stylesheet">
-    <script src="/static/contrib/jquery-1.11.1.min.js"></script>
-    <script src="/static/contrib/jquery.validate.min.js"></script>
-    <script src="/static/js/page.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <h1>UIC Security Study Signup</h1>
-
-          <section>
-            <h2>Thank You For Your Involvement!</h2>
-            <p>Thank you very much for agreeing to be a part of this security.  The next step of the process is to select a location and date that you are able to meet to formally enroll in the study.</p>
-
-            <p>During this meeting we will go over the purpose of the study and review the necessary qualifications each participant meet to participate.  You will also be asked to sign piece of paper, stating that you agree to participate in the study.</p>
-
-            <p>You will then be guided through installing a browser extension in your browser, which you will need to allow run for the next two months. <strong>You must the laptop you use as your primary web-browsing device to this meeting</strong>. Failure to do so will make you ineligible to participate in the study.</p>
-
-            <p>You will be able to ask questions at any time during this meeting.  The meeting will last approximately 30 minutes.  Once the meeting is over you will receive your initial $15 Amazon Gift Card.  You will receive the second $15 gift card on your successful completion of the study.</p>
-          </section>
-
-          <section>
-            <fieldset class="well">
-              <form role="form" action="/">
-                <legend><h2>Date and Location Signup</h2></legend>
-                <p>Please select one date and location that when you are able to meet. Note that all dates are in the SEO building (851 S. Morgan St.) on the University of Illinois at Chicago, East Campus.</p>
-
-                <div class="form-group">
-                  <label for="email">Email address</label>
-                  <input type="email" class="form-control required email" id="email" placeholder="account@example.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Security Study Signup</title>
+        <link href="/static/contrib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/stylesheets/main.css" rel="stylesheet">
+        <script src="/static/contrib/jquery-1.11.1.min.js"></script>
+        <script src="/static/contrib/jquery.validate.min.js"></script>
+        <script src="/static/js/page.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-offset-2 col-lg-4">
+                    <img src="/static/images/cslogo_ds.png" alt="UIC Computer Science Dept Logo">
                 </div>
-
-                <h3>Tuesday, September 30th, 2014</h3>
-
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="date_location" id="date-location-1" class="required" value="2014-09-30--11--seo-1325">
-                    11:00 PM – SEO 1325
-                  </label>
+                <div class="col-lg-4">
+                    <h1>UIC Security Study Signup</h1>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <section>
+                    {% if complete %}
+                        <div class="bg-success">
+                            <p>Submission successfully received.  Thank you very much and looking forward to seeing you there!</p>
 
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="date_location" id="date-location-2" value="2014-09-30--15--seo-1000">
-                    3:00 PM - SEO 1000
-                  </label>
+                            <p>If you have any questions or concerns, or are not able to make the time you registered for, please email me at Peter Snyder, <a href="mailto:psnyde2@uic.edu">psnyde2@uic.edu</a>.</p>
+                        </div>
+                    {% else %}
+
+                        <h2>Thank You For Your Involvement!</h2>
+                        <p>Thank you very much for agreeing to be a part of this security.  The next step of the process is to select a location and date that you are able to meet to formally enroll in the study.</p>
+
+                        <p>During this meeting we will go over the purpose of the study and review the necessary qualifications each participant meet to participate.  You will also be asked to sign piece of paper, stating that you agree to participate in the study.</p>
+
+                        <p>You will then be guided through installing a browser extension in your browser, which you will need to allow run for the next two months. <strong>You must bring the laptop you use as your primary web-browsing device to this meeting</strong>. Failure to do so will make you ineligible to participate in the study.</p>
+
+                        <p>You will be able to ask questions at any time during this meeting.  The meeting will last approximately 30 minutes.  Once the meeting is over you will receive your initial $15 Amazon Gift Card.  You will receive the second $15 gift card on your successful completion of the study.</p>
+
+                        <fieldset class="well">
+                            <form method="POST" role="form" action="/">
+                                <legend><h2>Date and Location Signup</h2></legend>
+                                {% if errors %}
+                                    {% for error in errors %}
+                                        <p class="bg-danger">{{error}}</p>
+                                    {% end %}
+                                {% end %}
+                                <p>Please select one date and location that when you are able to meet. Note that all dates are in the SEO building (851 S. Morgan St.) on the University of Illinois at Chicago, East Campus.</p>
+
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" class="form-control required email" id="email" placeholder="account@example.org" name="email">
+                                </div>
+
+                                <h3>Tuesday, September 30th, 2014</h3>
+
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="date_location" id="date-location-1" class="required" value="2014-09-30--11--seo-1325">
+                                        11:00 PM – SEO 1325
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="date_location" id="date-location-2" value="2014-09-30--15--seo-1000">
+                                        3:00 PM - SEO 1000
+                                    </label>
+                                </div>
+
+                                <h3>Wednesday, October 1st, 2014</h3>
+
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="date_location" id="date-location-3" value="2014-10-01--13--seo-1000">
+                                        1:00 PM – SEO 1000
+                                    </label>
+                                </div>
+
+                                <h3>Thursday, October 2nd, 2014</h3>
+
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="date_location" id="date-location-4" value="2014-10-02--11--seo-1325">
+                                        11:00 AM – SEO 1325
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="date_location" id="date-location-5" value="2014-10-02--13--seo-1325">
+                                        1:00 PM – SEO 1325
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="date_location" id="date-location-6" value="2014-10-02--16--seo-1325">
+                                        4:00 PM – SEO 1325
+                                    </label>
+                                </div>
+
+                                <h3>Friday, October 3nd, 2014</h3>
+
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="date_location" id="date-location-7" value="2014-10-03--13--seo-1325">
+                                        1:00 PM – SEO 1325
+                                    </label>
+                                </div>
+
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                            </form>
+                        </fieldset>
+                    {% end %}
+                    </section>
+
+                    <section>
+                    <h2>I have questions.  What can I contact?</h2>
+                    <p>This study is being carried out by <a href="http://peteresnyder.com">Peter Snyder</a>.  Please feel free to contact me with any questions you might have at <a href="mailto:psnyde2@uic.edu">psnyde2@uic.edu</a>.</p>
+
+                    <p>This research is being conducted by <a href="http://www.cs.uic.edu/~ckanich/">Chris Kanich</a> at the University of Illinois at Chicago and <a href="http://www.cs.unc.edu/~reiter/">Mike Reiter</a> at the University of Northern Carolina. It has been approved by the UIC Office for the Protection of Research Subjects as protocol number #2013-0886.</p>
+                    </section>
                 </div>
-
-                <h3>Wednesday, October 1st, 2014</h3>
-
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="date_location" id="date-location-3" value="2014-10-01--13--seo-1000">
-                    1:00 PM – SEO 1000
-                  </label>
-                </div>
-
-                <h3>Thursday, October 2nd, 2014</h3>
-
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="date_location" id="date-location-4" value="2014-10-02--11--seo-1325">
-                    11:00 AM – SEO 1325
-                  </label>
-                </div>
-
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="date_location" id="date-location-5" value="2014-10-02--13--seo-1325">
-                    1:00 PM – SEO 1325
-                  </label>
-                </div>
-
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="date_location" id="date-location-6" value="2014-10-02--16--seo-1325">
-                    4:00 PM – SEO 1325
-                  </label>
-                </div>
-
-                <h3>Friday, October 3nd, 2014</h3>
-
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="date_location" id="date-location-7" value="2014-10-03--13--seo-1325">
-                    1:00 PM – SEO 1325
-                  </label>
-                </div>
-
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
-              </form>
-            </fieldset>
-          </section>
-
-          <section>
-            <h2>I have questions.  What can I contact?</h2>
-            <p>This study is being carried out by <a href="http://peteresnyder.com">Peter Snyder</a>.  Please feel free to contact me with any questions you might have at <a href="mailto:psnyde2@uic.edu">psnyde2@uic.edu</a>.</p>
-
-            <p>This research is being conducted by <a href="http://www.cs.uic.edu/~ckanich/">Chris Kanich</a> at the University of Illinois at Chicago and <a href="http://www.cs.unc.edu/~reiter/">Mike Reiter</a> at the University of Northern Carolina. It has been approved by the UIC Office for the Protection of Research Subjects as protocol number #2013-0886.</p>
-          </section>
+            </div>
         </div>
-      </div>
-    </div>
-  </body>
+    </body>
 </html>

@@ -4,7 +4,7 @@ __pycache__/
 
 # OSX Nonsense
 .DS_Store
-
+logs
 # C extensions
 *.so
 
