@@ -29,12 +29,12 @@ def start(routes, params):
     webcommon.reporting.configure(params.log_dir, uid=owner_uid)
 
     if params.ssl_options:
-        tornado.httpserver.HTTPServer(
+        server = tornado.httpserver.HTTPServer(
             application, ssl_options=params.ssl_options)
     else:
-        tornado.httpserver.HTTPServer(application)
+        server = tornado.httpserver.HTTPServer(application)
 
-    application.listen(params.port)
+    server.listen(params.port)
 
     # Next, if the config file has specified some lesser user for the
     # application to run as, drop down to that user account now
