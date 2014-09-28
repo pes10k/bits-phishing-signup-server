@@ -1,0 +1,19 @@
+section {
+  padding-top: 2em;
+}
+section:last-child {
+  padding-bottom: 4em;
+}
+
+label.error {
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  border-radius: 0.5em;
+  clear: both;
+  display: block;
+  border: 1px solid red;
+  background-color: #ff6666;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
