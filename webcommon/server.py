@@ -28,13 +28,6 @@ def start(routes, params):
     # First, make sure that we have a directory set up that we can write logs
     webcommon.reporting.configure(params.log_dir, uid=owner_uid)
 
-    # Next, if the config file has specified some lesser user for the
-    # application to run as, drop down to that user account now
-    if owner_uid:
-        os.setuid(owner_uid)
-        msg = "Decreasing permisisons to {0}".format(tornado_user)
-        tornado.log.app_log.info(msg)
-
     if params.ssl_options:
         tornado.httpserver.HTTPServer(
             application, ssl_options=params.ssl_options)
@@ -42,6 +35,13 @@ def start(routes, params):
         tornado.httpserver.HTTPServer(application)
 
     application.listen(params.port)
+
+    # Next, if the config file has specified some lesser user for the
+    # application to run as, drop down to that user account now
+    if owner_uid:
+        os.setuid(owner_uid)
+        msg = "Decreasing permisisons to {0}".format(tornado_user)
+        tornado.log.app_log.info(msg)
 
     # Finally, start the server up and start serving requests!
     tornado.ioloop.IOLoop.instance().start()
