@@ -18,8 +18,6 @@ def start(routes, params):
 
     application = tornado.web.Application(routes, **settings)
 
-    application.listen(params.port)
-
     # If we're going to run from a less privilaged user account, we need to
     # find the uid of that user account.  This is needed in several locations,
     # so we can just find it once and hold onto it
@@ -35,6 +33,14 @@ def start(routes, params):
         os.setuid(owner_uid)
         msg = "Decreasing permisisons to {0}".format(tornado_user)
         tornado.log.app_log.info(msg)
+
+    if params.ssl_options:
+        tornado.httpserver.HTTPServer(
+            application, ssl_options=params.ssl_options)
+    else:
+        tornado.httpserver.HTTPServer(application)
+
+    application.listen(params.port)
 
     # Finally, start the server up and start serving requests!
     tornado.ioloop.IOLoop.instance().start()
