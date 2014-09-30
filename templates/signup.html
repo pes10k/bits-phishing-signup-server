@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Signup{% end %}
+
+{% block body %}
+    <div class="col-lg-8 col-lg-offset-2">
+        <section>
+            {% if complete %}
+                <div class="bg-success">
+                    <p>Submission successfully received.  Thank you very much and looking forward to seeing you there!</p>
+
+                    <p>If you have any questions or concerns, or are not able to make the time you registered for, please email me at Peter Snyder, <a href="mailto:psnyde2@uic.edu">psnyde2@uic.edu</a>.</p>
+                </div>
+            {% else %}
+
+                <h2>Thank You For Your Involvement!</h2>
+                <p>Thank you very much for agreeing to be a part of this security study.  The next step of the process is to select a location and date that you are able to meet to formally enroll in the study.</p>
+
+                <p>During this meeting we will go over the purpose of the study and review the necessary qualifications each participant meet to participate.  You will also be asked to sign piece of paper, stating that you agree to participate in the study.</p>
+
+                <p>You will then be guided through installing a browser extension in your browser, which you will need to allow run for the next two months. <strong>You must bring the laptop you use as your primary web-browsing device to this meeting</strong>. Failure to do so will make you ineligible to participate in the study.</p>
+
+                <p>You will be able to ask questions at any time during this meeting.  The meeting will last approximately 30 minutes.  You will receive your initial $15 Amazon Gift Card through email with in a week of enrolling in the study.  You will receive the second $15 gift card on your successful completion of the study.</p>
+
+                <fieldset class="well">
+                    <form method="POST" role="form" action="/signup">
+                        <legend><h2>Date and Location Signup</h2></legend>
+                        {% if errors %}
+                            {% for error in errors %}
+                                <p class="bg-danger">{{error}}</p>
+                            {% end %}
+                        {% end %}
+                        <p>Please select one date and location that when you are able to meet. Note that all dates are in the SEO building (851 S. Morgan St.) on the University of Illinois at Chicago, East Campus.</p>
+
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control required email" id="email" placeholder="account@example.org" name="email">
+                        </div>
+
+                        <h3>Tuesday, September 30th, 2014</h3>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="date_location" id="date-location-1" class="required" value="2014-09-30--11--seo-1325">
+                                11:00 PM – SEO 1325
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="date_location" id="date-location-2" value="2014-09-30--15--seo-1000">
+                                3:00 PM – SEO 1000
+                            </label>
+                        </div>
+
+                        <h3>Wednesday, October 1st, 2014</h3>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="date_location" id="date-location-3" value="2014-10-01--13--seo-1000">
+                                1:00 PM – SEO 1000
+                            </label>
+                        </div>
+
+                        <h3>Thursday, October 2nd, 2014</h3>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="date_location" id="date-location-4" value="2014-10-02--11--seo-1325">
+                                11:00 AM – SEO 1325
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="date_location" id="date-location-5" value="2014-10-02--13--seo-1325">
+                                1:00 PM – SEO 1325
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="date_location" id="date-location-6" value="2014-10-02--16--seo-1325">
+                                4:00 PM – SEO 1325
+                            </label>
+                        </div>
+
+                        <h3>Friday, October 3nd, 2014</h3>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="date_location" id="date-location-7" value="2014-10-03--13--seo-1325">
+                                1:00 PM – SEO 1325
+                            </label>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                    </form>
+                </fieldset>
+            {% end %}
+        </section>
+    </div>
+{% end %}
+
+{% block scripts %}
+    <script src="{{ static_url('contrib/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ static_url('contrib/jquery.validate.min.js') }}"></script>
+    <script src="{{ static_url('js/page.js') }}"></script>
+{% end %}

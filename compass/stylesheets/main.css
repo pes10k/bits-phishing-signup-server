@@ -29,3 +29,7 @@ label.error {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
+
+.download-container {
+  text-align: center;
+}

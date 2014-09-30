@@ -13,6 +13,8 @@ mongo_params = {
 # The database in Mongo to connect to.
 mongo_database = 'phish_signup'
 
+ssl_options = None
+
 # The directory that the application should write logs to.  If this directory
 # does not exist, it will be created at application start up
 log_dir = "logs"
@@ -28,7 +30,7 @@ tornado_user = None
 debug = True
 
 # The port that tornado should bind to and accept requests from
-port = 8483
+port = 8443
 
 # Path to where templates are stored on disk
 template_path = "templates"
